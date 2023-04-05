@@ -11,7 +11,7 @@ const Article = () => {
     const { articleId } = params
     console.log(articleId)
     const { data, isSuccess } = useGetNewsQuery()
-    const articleData = isSuccess ? data.find((el, index) => parseInt(articleId, 10) === index) : null
+    const articleData = isSuccess ? data.find((article, index) => parseInt(articleId, 10) === index) : null
     return <div className="mx-auto container px-32 my-12">
         {articleData !== null ?
             <div className="m-5">
@@ -25,7 +25,7 @@ const Article = () => {
                     <p className="font-bold"> To read more <a href={articleData.url} className="text-red-700 hover:underline">Click here</a></p>
                 </div>
             </div> :
-            <div className=" text-center text-4xl text-red-700 flex justify-between font-bold items-center">Loading...</div>}
+            <div className="h-screen w-full text-red-700 flex justify-center items-center text-3xl font-bold">Loading....</div>}
     </div >
 };
 

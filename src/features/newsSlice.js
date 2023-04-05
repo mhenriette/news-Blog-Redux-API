@@ -10,9 +10,24 @@ export const newsAPI = createApi({
     }),
     getPublisher: builder.query({
       query: () =>
-        "top-headlines/sources?apiKey=9bfc1e38aaee4c038fc09a79c0ea1394",
+        "top-headlines/sources?country=us&apiKey=9bfc1e38aaee4c038fc09a79c0ea1394",
       transformResponse: (response) => response.sources,
+    }),
+    getArticles: builder.query({
+      query: (id) =>
+        `everything?sources=${id}&apiKey=9bfc1e38aaee4c038fc09a79c0ea1394`,
+      transformResponse: (response) => response.articles,
+    }),
+    searchArticle: builder.query({
+      query: (keyword) =>
+        `everything?q=${keyword}&apiKey=9bfc1e38aaee4c038fc09a79c0ea1394`,
+      transformResponse: (response) => response.articles,
     }),
   }),
 });
-export const { useGetNewsQuery, useGetPublisherQuery } = newsAPI;
+export const {
+  useGetNewsQuery,
+  useGetPublisherQuery,
+  useGetArticlesQuery,
+  useSearchArticleQuery,
+} = newsAPI;
