@@ -1,12 +1,13 @@
 import { Link, useParams } from "react-router-dom";
 import { useSearchArticleQuery } from "../../features/newsSlice";
 import ArticleCard from "../ui/ArticleCard";
+import Wrapper from "../wrappers/Wrapper";
 
 const Searched = () => {
     const { keyword } = useParams();
     const { data, isSuccess } = useSearchArticleQuery(keyword);
     return (
-        <div>
+        <Wrapper>
             {isSuccess ? (
                 <div>
                     {data.length > 0 ? (
@@ -39,7 +40,7 @@ const Searched = () => {
                     Loading....
                 </div>
             )}
-        </div>
+        </Wrapper>
     );
 };
 
