@@ -15,8 +15,6 @@ function App() {
         <Route path='/articlePublisher/:publisherId' element={<PublisherArticle />} />
         <Route path='/Searched/:keyword' element={<Searched />} />
       </Routes>
-      {/* <Home /> */}
-      {/* <Publishers /> */}
     </div>
   )
 }

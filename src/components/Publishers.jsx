@@ -1,19 +1,22 @@
 import React from "react";
 import { useGetPublisherQuery } from "../features/newsSlice";
 import PublisherCard from "./ui/PublisherCard";
+import Wrapper from "./wrappers/Wrapper";
 
 const Publishers = () => {
     const { data, isSuccess } = useGetPublisherQuery();
-    return <div className="my-10 mx-4">
-        {isSuccess &&
-            <div>
-                <h1 className="font-bold flex text-3xl truncate justify-between items-center flex-nowrap text-red-700 my-10 after:w-4/5 after:h-1 after:block after:bg-red-700 ">Publishers</h1>
-                <div className="grid grid-cols-6 gap-3 ">
-                    {data.map(el => <PublisherCard name={el.name} id={el.id} />)}
+    return <Wrapper>
+        <div className="my-10 mx-4">
+            {isSuccess &&
+                <div>
+                    <h1 className="font-bold flex text-3xl truncate justify-between items-center flex-nowrap text-red-700 my-10 lg:after:w-4/5 lg:after:h-1 lg:after:block after:bg-red-700 ">Publishers</h1>
+                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 ">
+                        {data.map(({ name, id }, index) => <PublisherCard name={name} id={id} key={index} />)}
+                    </div>
                 </div>
-            </div>
-        }
-    </div>
+            }
+        </div>
+    </Wrapper>
 };
 
 export default Publishers;

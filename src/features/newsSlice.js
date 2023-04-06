@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const newsAPI = createApi({
   reducerPath: "newsAPI",
-  baseQuery: fetchBaseQuery({ baseUrl: "https://newsapi.org/v2/" }),
+  baseQuery: fetchBaseQuery({ baseUrl: "https://news-proxy.netlify.app/api" }),
   endpoints: (builder) => ({
     getNews: builder.query({
       query: () =>

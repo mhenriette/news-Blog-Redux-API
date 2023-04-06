@@ -3,7 +3,7 @@ import React from "react";
 const ArticleCard = ({ urlToImage, title, url }) => {
     return <div className="m-4 group">
         <a href={url}>
-            <div className="w-[300px] h-[200px] relative">
+            <div className=" w-full h-60 lg:w-[300px] lg:h-[200px] relative">
                 <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-30"></div>
                 <img src={urlToImage} alt={title} className="w-full h-full object-cover" />
             </div>

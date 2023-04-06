@@ -14,9 +14,9 @@ const Searched = () => {
                         data.length > 0 ?
                             <div >
                                 <button className="bg-red-700 px-2 py-3 m-4 text-white font-semibold hover:bg-gray-600"><Link to='/'>Back Home</Link></button>
-                                <div className="grid grid-cols-5 gap-3">
-                                    {data.map(({ title, urlToImage, url }) =>
-                                        <ArticleCard title={title} urlToImage={urlToImage} url={url} />
+                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-3">
+                                    {data.map(({ title, urlToImage, url }, index) =>
+                                        <ArticleCard title={title} urlToImage={urlToImage} url={url} key={index} />
                                     )}
                                 </div>
                             </div>
