@@ -17,12 +17,12 @@ const News = () => {
                         </h1>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5">
                             {data.map((article, index) => {
-                                const { urlToImage, title } = article;
+                                const { urlToImage, title, id } = article;
                                 return (
                                     <NewsCard
                                         urlToImage={urlToImage}
                                         title={title}
-                                        key={index}
+                                        key={id}
                                         index={index}
                                     />
                                 );

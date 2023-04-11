@@ -12,10 +12,10 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/article/:articleId" element={<Article />} />
         <Route
-          path="/articlePublisher/:publisherId"
+          path="/article-publisher/:publisherId"
           element={<PublisherArticle />}
         />
-        <Route path="/Searched/:keyword" element={<Searched />} />
+        <Route path="/searched/:keyword" element={<Searched />} />
       </Routes>
     </div>
   );

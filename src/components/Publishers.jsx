@@ -1,9 +1,9 @@
 import { useGetPublisherQuery } from "../features/newsSlice";
 import PublisherCard from "./ui/PublisherCard";
 import Wrapper from "./wrappers/Wrapper";
-
 const Publishers = () => {
     const { data, isSuccess } = useGetPublisherQuery();
+
     return (
         <Wrapper>
             <div className="my-10 mx-4">
@@ -13,8 +13,8 @@ const Publishers = () => {
                             Publishers
                         </h1>
                         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 ">
-                            {data.map(({ name, id }, index) => (
-                                <PublisherCard name={name} id={id} key={index} />
+                            {data.map(({ name, id, uniqueId }) => (
+                                <PublisherCard name={name} id={id} key={uniqueId} />
                             ))}
                         </div>
                     </div>

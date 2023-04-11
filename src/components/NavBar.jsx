@@ -2,13 +2,13 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Wrapper from "./wrappers/Wrapper";
 const NavBar = () => {
-  const [text, setText] = useState("");
-  const getText = (event) => {
-    setText(event.target.value);
+  const [keyword, setKeyword] = useState("");
+  const getKeyword = (event) => {
+    setKeyword(event.target.value);
   };
   const navigate = useNavigate();
   const goToSearch = (event) => {
-    event.key === "Enter" && navigate(`Searched/${text}`);
+    event.key === "Enter" && navigate(`searched/${keyword}`);
   };
   return (
     <div className="w-full px-6 py-4 bg-red-700 mb-10 ">
@@ -22,8 +22,8 @@ const NavBar = () => {
               placeholder="Search news..."
               className="text-gray-400 rounded-md md:px-2 md:py-3 p-2 outline-none"
               type="text"
-              value={text}
-              onChange={getText}
+              value={keyword}
+              onChange={getKeyword}
               onKeyPress={goToSearch}
             />
           </div>
