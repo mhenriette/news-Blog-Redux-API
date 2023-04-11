@@ -12,7 +12,7 @@ const Article = () => {
         <Wrapper>
             {articleData ? (
                 <div className="h-auto w-full flex justify-center items-center flex-col">
-                    <div className="md:w-1/2 my-5">
+                    <div className="md:w-1/2 my-5 px-5 md:px-0">
                         <button className="bg-red-700 px-2 py-3 text-white font-semibold">
                             <Link to="/">Go back to articles</Link>
                         </button>
