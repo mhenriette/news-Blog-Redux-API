@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Wrapper from "./wrappers/Wrapper";
+import { useSelector } from "react-redux";
 const NavBar = () => {
   const [keyword, setKeyword] = useState("");
   const getKeyword = (event) => {
@@ -10,6 +11,8 @@ const NavBar = () => {
   const goToSearch = (event) => {
     event.key === "Enter" && navigate(`searched/${keyword}`);
   };
+  const state = useSelector(state => state.theme)
+  console.log(state)
   return (
     <div className="w-full px-6 py-4 bg-red-700 mb-10 ">
       <Wrapper>
@@ -18,14 +21,20 @@ const NavBar = () => {
             The News
           </div>
           <div>
-            <input
-              placeholder="Search news..."
-              className="text-gray-400 rounded-md md:px-2 md:py-3 p-2 outline-none"
-              type="text"
-              value={keyword}
-              onChange={getKeyword}
-              onKeyPress={goToSearch}
-            />
+            <div>
+              <input
+                placeholder="Search news..."
+                className="text-gray-400 rounded-md md:px-2 md:py-3 p-2 outline-none"
+                type="text"
+                value={keyword}
+                onChange={getKeyword}
+                onKeyPress={goToSearch}
+              />
+            </div>
+            <div className="bg-black w-[70px] h-[30px] rounded-[50px] relative flex justify-start items-center">
+              <div className="bg-red-700 rounded-full w-6 h-6 p-1 absolute top-[3px] left-[4px] " />
+            </div>
+
           </div>
         </div>
       </Wrapper>

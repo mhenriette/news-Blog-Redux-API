@@ -4,12 +4,26 @@ import App from "./App";
 import { ApiProvider } from "@reduxjs/toolkit/dist/query/react";
 import { newsAPI } from "./features/newsSlice";
 import { BrowserRouter } from "react-router-dom";
+import themerReducer from "./features/themeSlice";
+import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
+import { Provider } from "react-redux";
+
+const store = configureStore({
+  reducer: {
+    theme: themerReducer,
+    newsAPI: newsAPI.reducer
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({}).concat([newsAPI.middleware])
+})
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
-      <ApiProvider api={newsAPI}>
+      <Provider store={store}>
         <App />
-      </ApiProvider>
+      </Provider>
+
+
     </BrowserRouter>
   </React.StrictMode>
 );
