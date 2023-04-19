@@ -31,9 +31,6 @@ const NavBar = () => {
                 onKeyPress={goToSearch}
               />
             </div>
-            <div className="bg-black w-[70px] h-[30px] rounded-[50px] relative flex justify-start items-center">
-              <div className="bg-red-700 rounded-full w-6 h-6 p-1 absolute top-[3px] left-[4px] " />
-            </div>
 
           </div>
         </div>
