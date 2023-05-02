@@ -1,5 +1,7 @@
 import { useGetNewsQuery } from "../features/newsSlice";
 import NavBar from "./NavBar";
+import Publishers from "./Publishers";
+import Hero from "./sections/Hero";
 import NewsCard from "./ui/NewsCard";
 import Wrapper from "./wrappers/Wrapper";
 
@@ -10,13 +12,13 @@ const News = () => {
     <div className="">
       <NavBar />
       <Wrapper>
-        {isSuccess ? (
-          <div className="flex flex-col">
-            <h1 className="font-bold flex text-3xl truncate lg:justify-between items-center flex-nowrap text-red-700 my-4 mx-4 lg:after:w-4/5 lg:after:h-1 lg:after:block after:bg-red-700 ">
-              Trending News
-            </h1>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5">
-              {data.map((article, index) => {
+        <Hero />
+        <div className="grid grid-cols-3 items-start my-10">
+          {isSuccess ? (
+            <div className=" col-span-2">
+              <h1 className="text-red-700 text-2xl font-bold title-anchor mx-5 flex mb-5">Trending news</h1>
+              <div className="grid grid-cols-1  lg:grid-cols-3">
+                {data.slice(5).map((article, index) => {
                 const { urlToImage, title, id } = article;
                 return (
                   <NewsCard
@@ -28,12 +30,14 @@ const News = () => {
                 );
               })}
             </div>
-          </div>
-        ) : (
-          <div className="h-screen w-full text-red-700 flex justify-center items-center text-3xl font-bold">
-            Loading....
-          </div>
-        )}
+            </div>
+          ) : (
+            <div className="h-screen w-full text-red-700 flex justify-center items-center text-3xl font-bold">
+              Loading....
+            </div>
+          )}
+          <Publishers />
+        </div>
       </Wrapper>
     </div>
   );

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Wrapper from "./wrappers/Wrapper";
 import { useSelector } from "react-redux";
 const NavBar = () => {
@@ -19,6 +19,14 @@ const NavBar = () => {
         <div className="flex justify-between items-center">
           <div className=" font-bold text-base md:text-4xl text-white uppercase">
             The News
+          </div>
+          <div className="flex text-white font-bold  items-center">
+            <Link className="mx-6 active-Link">Home</Link>
+            <Link className="mx-6 active-Link">Sport</Link>
+            <Link className="mx-6 active-Link">Cinema</Link>
+            <Link className="mx-6 active-Link">Politics</Link>
+            <Link className="mx-6 active-Link">Science</Link>
+            <Link className="mx-6 active-Link">Tech</Link>
           </div>
           <div>
             <div>
