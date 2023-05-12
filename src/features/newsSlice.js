@@ -6,7 +6,7 @@ export const newsAPI = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: "https://news-proxy.netlify.app/api" }),
   endpoints: (builder) => ({
     getNews: builder.query({
-      query: () => `top-headlines?country=us&pageSize=14&apiKey=${apiKey}`,
+      query: () => `top-headlines?country=us&pageSize=9&apiKey=${apiKey}`,
       transformResponse: (response) => {
         const articles = response.articles;
 
@@ -25,7 +25,7 @@ export const newsAPI = createApi({
       },
     }),
     getHomeNews: builder.query({
-      query: () => `top-headlines?country=us&pageSize=4&apiKey=${apiKey}`,
+      query: () => `top-headlines?country=us&pageSize=20&apiKey=${apiKey}`,
       transformResponse: (response) => {
         const homeNews = response.articles;
         const homeNewsWithId = homeNews.map((article) => ({

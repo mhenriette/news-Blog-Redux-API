@@ -7,9 +7,8 @@ import Wrapper from "./wrappers/Wrapper";
 
 const News = () => {
   const { data, isSuccess } = useGetNewsQuery();
-
   return (
-    <div className="">
+    <div>
       <NavBar />
       <Wrapper>
         <Hero />
@@ -18,7 +17,7 @@ const News = () => {
             <div className=" col-span-2">
               <h1 className="text-red-700 text-2xl font-bold title-anchor mx-5 flex mb-5">Trending news</h1>
               <div className="grid grid-cols-1  lg:grid-cols-3">
-                {data.slice(5).map((article, index) => {
+                {data.map((article, index) => {
                 const { urlToImage, title, id } = article;
                 return (
                   <NewsCard
@@ -26,6 +25,7 @@ const News = () => {
                     title={title}
                     key={id}
                     index={index}
+                    id={article.id}
                   />
                 );
               })}
