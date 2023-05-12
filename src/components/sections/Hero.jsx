@@ -9,7 +9,7 @@ const Hero = () => {
     console.log(isSuccess, 'Success')
     return (
             <div className="m-5">
-                <div className="text-2xl font-bold my-4 text-red-700 flex justify-between items-center"><h1>
+            <div className=" text-lg md:text-2xl font-bold my-4 text-red-700 flex justify-between items-center"><h1>
                     Welcome to THE NEWS
                 </h1>
                     <p>{`${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`}</p>
