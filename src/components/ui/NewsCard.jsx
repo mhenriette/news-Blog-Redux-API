@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 
-const NewsCard = ({ urlToImage, title, index }) => {
+const NewsCard = ({ urlToImage, title, index, id }) => {
     return (
         <div className="m-4 group">
-            <Link to={`/article/${index}`}>
-                <div className="lg:w-[260px] w-full h-64 lg:h-[170px] relative">
+            <Link to={`/article/${id}`}>
+                <div className="lg:w-[300px] w-full h-64 lg:h-[170px] relative">
                     <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-30"></div>
                     <img
                         src={urlToImage}

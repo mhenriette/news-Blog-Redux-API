@@ -6,8 +6,9 @@ const Article = () => {
   const { articleId } = useParams();
   const { data, isSuccess } = useGetNewsQuery();
   const articleData = isSuccess
-    ? data.find((article, index) => parseInt(articleId, 10) === index)
+    ? data.find(article => articleId === article.id)
     : null;
+
   return (
     <Wrapper>
       {articleData ? (
