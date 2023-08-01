@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@layer components{
+    .active-Link{
+        @apply after:w-full  after:h-1 hover:after:bg-white after:block after:mt-1
+    }
+    .title-anchor{
+        @apply before:h-auto before:mr-2 before:w-2 before:block flex before:bg-red-700
+    }
+}

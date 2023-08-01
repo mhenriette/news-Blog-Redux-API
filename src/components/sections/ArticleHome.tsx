@@ -1,13 +1,14 @@
 import { Link, useParams } from "react-router-dom";
-import { useGetNewsQuery } from "../../features/newsSlice";
+import { useGetHomeNewsQuery } from "../../features/newsSlice";
 import Wrapper from "../wrappers/Wrapper";
 
-const Article = () => {
-  const { articleId } = useParams();
-  const { data, isSuccess } = useGetNewsQuery();
+const ArticleHome = () => {
+  const { homeId } = useParams();
+  const { data, isSuccess } = useGetHomeNewsQuery(undefined);
   const articleData = isSuccess
-    ? data.find((article, index) => parseInt(articleId, 10) === index)
+    ? data.find((article) => homeId === article.id)
     : null;
+
   return (
     <Wrapper>
       {articleData ? (
@@ -55,4 +56,4 @@ const Article = () => {
   );
 };
 
-export default Article;
+export default ArticleHome;
