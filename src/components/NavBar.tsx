@@ -1,18 +1,17 @@
-import { useState } from "react";
+import { ChangeEvent, useState, KeyboardEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Wrapper from "./wrappers/Wrapper";
 import { useSelector } from "react-redux";
 const NavBar = () => {
   const [keyword, setKeyword] = useState("");
-  const getKeyword = (event) => {
+  const getKeyword = (event: ChangeEvent<HTMLInputElement>) => {
     setKeyword(event.target.value);
   };
   const navigate = useNavigate();
-  const goToSearch = (event) => {
+  const goToSearch = (event: KeyboardEvent<HTMLInputElement>) => {
     event.key === "Enter" && navigate(`searched/${keyword}`);
   };
-  const state = useSelector(state => state.theme)
-  console.log(state)
+  const state = useSelector<{theme:string}>((state) => state.theme);
   return (
     <div className="w-full px-6 py-4 bg-red-700 mb-10 ">
       <Wrapper>
@@ -21,11 +20,21 @@ const NavBar = () => {
             The News
           </div>
           <div className="flex text-white font-bold  items-center">
-            <Link className=" mx-3 lg:mx-6 active-Link" to="/sport">Sport</Link>
-            <Link className=" mx-3 lg:mx-6 active-Link" to="/cinema">Cinema</Link>
-            <Link className=" mx-3 lg:mx-6 active-Link" to="/politics">Politics</Link>
-            <Link className=" mx-3 lg:mx-6 active-Link" to="/science">Science</Link>
-            <Link className=" mx-3 lg:mx-6 active-Link" to="/tech">Tech</Link>
+            <Link className=" mx-3 lg:mx-6 active-Link" to="/sport">
+              Sport
+            </Link>
+            <Link className=" mx-3 lg:mx-6 active-Link" to="/cinema">
+              Cinema
+            </Link>
+            <Link className=" mx-3 lg:mx-6 active-Link" to="/politics">
+              Politics
+            </Link>
+            <Link className=" mx-3 lg:mx-6 active-Link" to="/science">
+              Science
+            </Link>
+            <Link className=" mx-3 lg:mx-6 active-Link" to="/tech">
+              Tech
+            </Link>
           </div>
           <div>
             <div>
@@ -38,7 +47,6 @@ const NavBar = () => {
                 onKeyPress={goToSearch}
               />
             </div>
-
           </div>
         </div>
       </Wrapper>

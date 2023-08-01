@@ -4,14 +4,12 @@ import Footer from "./Footer";
 import Hero from "./Hero";
 
 const Home = () => {
-    return (
-        <div>
-            <News />
-
-
-            <Footer />
-        </div>
-    );
+  return (
+    <div>
+      <News />
+      <Footer />
+    </div>
+  );
 };
 
 export default Home;

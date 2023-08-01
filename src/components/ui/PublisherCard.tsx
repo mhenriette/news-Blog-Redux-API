@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-const PublisherCard = ({ name, id }) => {
+const PublisherCard = ({ name, id }: { name: string; id: string }) => {
   return (
     <Link to={`/article-publisher/${id}`}>
       <div className="bg-red-600 rounded-xl px-1 py-2 hover:bg-gray-600">

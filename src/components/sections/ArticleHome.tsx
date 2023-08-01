@@ -1,12 +1,12 @@
 import { Link, useParams } from "react-router-dom";
-import { useGetNewsQuery } from "../../features/newsSlice";
+import { useGetHomeNewsQuery } from "../../features/newsSlice";
 import Wrapper from "../wrappers/Wrapper";
 
-const Article = () => {
-  const { articleId } = useParams();
-  const { data, isSuccess } = useGetNewsQuery();
+const ArticleHome = () => {
+  const { homeId } = useParams();
+  const { data, isSuccess } = useGetHomeNewsQuery(undefined);
   const articleData = isSuccess
-    ? data.find(article => articleId === article.id)
+    ? data.find((article) => homeId === article.id)
     : null;
 
   return (
@@ -56,4 +56,4 @@ const Article = () => {
   );
 };
 
-export default Article;
+export default ArticleHome;

@@ -1,15 +1,36 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { nanoid } from "@reduxjs/toolkit";
 const apiKey = import.meta.env.VITE_API_KEY;
+interface Article{
+  source:{
+    id: string|null;
+    name: string;
+  };
+  author:string;
+  title:string;
+  description:string;
+  url:string;
+  urlToImage:string;
+  publishedAt:string;
+  content:string;
+}
+interface Publisher{
+  id:string;
+  name:string;
+  descriptiom:string;
+  url:string;
+  category:string;
+  language:string;
+  country:string;
+}
 export const newsAPI = createApi({
   reducerPath: "newsAPI",
   baseQuery: fetchBaseQuery({ baseUrl: "https://news-proxy.netlify.app/api" }),
   endpoints: (builder) => ({
     getNews: builder.query({
       query: () => `top-headlines?country=us&pageSize=9&apiKey=${apiKey}`,
-      transformResponse: (response) => {
-        const articles = response.articles;
-
+      transformResponse: (response:{articles:Article[]}) => {
+        const articles= response.articles;
         const articlesWithIds = articles.map((article) => ({
           ...article,
           id: nanoid(),
@@ -26,7 +47,7 @@ export const newsAPI = createApi({
     }),
     getHomeNews: builder.query({
       query: () => `top-headlines?country=us&pageSize=20&apiKey=${apiKey}`,
-      transformResponse: (response) => {
+      transformResponse: (response:{articles:Article[]}) => {
         const homeNews = response.articles;
         const homeNewsWithId = homeNews.map((article) => ({
           ...article,
@@ -37,7 +58,7 @@ export const newsAPI = createApi({
     }),
     getPublisher: builder.query({
       query: () => `top-headlines/sources?country=us&apiKey=${apiKey}`,
-      transformResponse: (response) => {
+      transformResponse: (response:{sources:Publisher[]}) => {
         const publishers = response.sources;
         const publishersWithIds = publishers.map((publisher) => ({
           ...publisher,
@@ -48,11 +69,11 @@ export const newsAPI = createApi({
     }),
     getArticles: builder.query({
       query: (id) => `everything?sources=${id}&apiKey=${apiKey}`,
-      transformResponse: (response) => response.articles,
+      transformResponse: (response:{articles:Article[]}) => response.articles,
     }),
     searchArticle: builder.query({
       query: (keyword) => `everything?q=${keyword}&apiKey=${apiKey}`,
-      transformResponse: (response) => response.articles,
+      transformResponse: (response:{articles:Article[]}) => response.articles,
     }),
   }),
 });
