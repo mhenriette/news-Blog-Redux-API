@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
-import { ApiProvider } from "@reduxjs/toolkit/dist/query/react";
 import { newsAPI } from "./features/newsSlice";
 import { BrowserRouter } from "react-router-dom";
 import themerReducer from "./features/themeSlice";
@@ -11,19 +10,17 @@ import { Provider } from "react-redux";
 const store = configureStore({
   reducer: {
     theme: themerReducer,
-    newsAPI: newsAPI.reducer
+    newsAPI: newsAPI.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({}).concat([newsAPI.middleware])
-})
-ReactDOM.createRoot(document.getElementById("root")).render(
+    getDefaultMiddleware({}).concat([newsAPI.middleware]),
+});
+ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <BrowserRouter>
       <Provider store={store}>
         <App />
       </Provider>
-
-
     </BrowserRouter>
   </React.StrictMode>
 );
